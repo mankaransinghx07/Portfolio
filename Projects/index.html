@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        </style>
+</head>
+<body class="bddy">
+    <h class="name">Projects</h>
+    <div class="pjcat">
+        <button class="cat" data-url="all.html" id="btn1" onclick="clickCheckbox('checkbox1', this)">
+            <input type="checkbox" id="checkbox1">
+            All
+          </button>
+          
+          <button class="cat" data-url="webdev.html" id="btn2" onclick="clickCheckbox('checkbox2', this)">
+            <input type="checkbox" id="checkbox2">
+            Web Dev
+          </button>
+          
+          <button class="cat"data-url="backend.html" id="btn3" onclick="clickCheckbox('checkbox3', this)">
+            <input type="checkbox" id="checkbox3">
+            Backend
+          </button>
+          <script>
+          function clickCheckbox(checkboxId, button) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const buttons = document.querySelectorAll('.cat');
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+
+    buttons.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+
+    const checkbox = document.getElementById(checkboxId);
+    checkbox.checked = true;
+    button.classList.add('active');
+
+    // Load the URL in iframe
+    const url = button.getAttribute('data-url');
+    document.getElementById('displayFrame').src = url;
+  }
+          </script>
+    </div>
+
+    <div class="iframe-wrapper">
+      <iframe id="displayFrame" class="page-frame" src="all.html"></iframe>
+    </div>
+</body>
+</html>
